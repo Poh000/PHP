@@ -116,25 +116,141 @@ echo age(13)."<br>";
 $age = 6;
 switch ($age) {
     case 6:
-        echo "Poussin";
+        echo "Poussin"."<br>";
         break;
     case 7:
-        echo "Poussin";
+        echo "Poussin"."<br>";
         break;
     case 8:
-        echo "Pupille";
+        echo "Pupille"."<br>";
         break;
     case 9:
-        echo "Pupille";
+        echo "Pupille"."<br>";
         break;
     case 10:
-        echo "Minime";
+        echo "Minime"."<br>";
         break;
     case 11:
-        echo "Minime";
+        echo "Minime"."<br>";
         break;
     case 12:
-        echo "Cadet";
+        echo "Cadet"."<br>";
         break;
 }
 
+
+function compteur($nombre){
+    for ($i = 1; $i<=$nombre; $i++ ){
+        echo $i."<br>";
+    }
+}
+compteur(5);
+
+function suivant($nombre){
+    $n10=$nombre+10;
+    while ($nombre != $n10){
+        $nombre ++;
+        echo $nombre."<br>";
+    }
+}
+suivant(17);
+
+function table($nombre){
+    for ($i = 0; $i <=10; $i++){
+        $resultat = $i*$nombre;
+        echo "$i x $nombre = $resultat"."<br>";
+    }
+}
+table((2));
+
+function tabmax($tab){
+    $maximum = 0;
+    for ($i = 0; $i<count($tab);$i++){
+        if ($tab[$i] > $maximum) {
+            $maximum = $tab[$i];
+        }
+    }
+    return $maximum;
+}
+echo tabmax([5,10,13,1])."<br>";
+
+function tabmoy($tab){
+    $somme = 0;
+    for ($i = 0; $i<count($tab);$i++){
+        $somme += $tab[$i];
+    }
+    return $somme/count($tab);
+}
+echo tabmoy([10,20,15,15,8])."<br>";
+
+function tabmin($tab){
+    $minimum = $tab[0];
+    for ($i = 0; $i<count($tab);$i++){
+        if ($tab[$i] < $minimum) {
+            $minimum = $tab[$i];
+        }
+    }
+    return $minimum;
+}
+echo tabmin([5,10,13,1])."<br>";
+
+function tabminAbs($tab){
+    $minimum = abs($tab[0]);
+    for ($i = 0; $i<count($tab);$i++){
+        if (abs($tab[$i]) < $minimum) {
+            $minimum = abs($tab[$i]);
+        }
+    }
+    return $minimum;
+}
+echo tabminAbs([-5,10,13,-10])."<br>";
+
+function comptTab($tab){
+    $compteurPos = 0;
+    $compteurNeg = 0;
+    for ($i = 0; $i<count($tab);$i++){
+        if ($tab[$i] >= 0){
+            $compteurPos +=1;
+        } else if ($tab[$i] < 0){
+            $compteurNeg +=1;
+        }
+    }
+    return "il y a $compteurPos valeurs positives et $compteurNeg valeurs négatives dans le tableau."."<br>";
+}
+echo comptTab([-1,-2,-3,1,2,3]);
+
+function tri($tab){
+    for ($i = 0; $i< count($tab);$i++){
+        $mini= $i;
+        for ($j = $i+ 1; $j< count($tab);$j++){
+            if ($tab[$j]<$tab[$mini]){
+                $mini= $j;
+            }
+        }
+        $temp = $tab[$i];
+        $tab[$i]=$tab[$mini];
+        $tab[$mini]=$temp;
+    }
+    return $tab;
+}
+print_r(tri([25,33,11,6,21,96,38,6,4]));
+echo "<br>";
+
+function note ($tab){
+    $maximum = $tab[0]["notes"];
+    for ($i = 0; $i<count($tab);$i++){
+        if ($tab[$i]["notes"]>$maximum) {
+            $maximum = $tab[$i]["notes"];
+            $indiceI = $i;
+        }
+    }
+    return $tab[$indiceI]["prénom"]." ".$tab[$indiceI]["nom"]." ".$tab[$indiceI]["notes"]."<br>";
+}
+
+echo note([
+            ["prénom"=>"Jean", "nom"=> "albert", "notes"=> 10],
+            ["prénom"=>"Marie", "nom"=> "durand", "notes"=> 14],
+            ["prénom"=>"Clément", "nom"=> "dupond", "notes"=> 18],
+            ["prénom"=>"Julien", "nom"=> "severac", "notes"=> 15],
+            ["prénom"=>"Sophie", "nom"=> "lebon", "notes"=> 16]
+]);
