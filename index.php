@@ -254,3 +254,23 @@ echo note([
             ["prénom"=>"Julien", "nom"=> "severac", "notes"=> 15],
             ["prénom"=>"Sophie", "nom"=> "lebon", "notes"=> 16]
 ]);
+
+
+function noteMin ($tab){
+    $minimum = $tab[0]["notes"];
+    for ($i = 0; $i<count($tab);$i++){
+        if ($tab[$i]["notes"]<$minimum) {
+            $minimum = $tab[$i]["notes"];
+            $indiceI = $i;
+        }
+    }
+    return $tab[$indiceI]["prénom"]." ".$tab[$indiceI]["nom"]." ".$tab[$indiceI]["notes"]."<br>";
+}
+
+echo noteMin([
+            ["prénom"=>"Jean", "nom"=> "albert", "notes"=> 10],
+            ["prénom"=>"Marie", "nom"=> "durand", "notes"=> 14],
+            ["prénom"=>"Clément", "nom"=> "dupond", "notes"=> 18],
+            ["prénom"=>"Julien", "nom"=> "severac", "notes"=> 15],
+            ["prénom"=>"Sophie", "nom"=> "lebon", "notes"=> 16]
+]);
